@@ -1,0 +1,64 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-container {
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: #5CDB95;
+}
+
+.info-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #05368B;
+}
+.info-container .slack {
+  color:#05368B;
+  font-size: 40px;
+}
+
+.page-container {
+  display: flex;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  background-color: #EDF5E1;
+}
+
+
+.body-container {
+  display: flex;
+  border: 7px solid #379683;
+  height: 50%;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 90px;
+}
+
+
+
+.footer-container {
+  display: flex;
+  height: 70px;
+  background-color: #5CDB95;
+}
+
+.footer-info {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #05368B;
+}

@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<script src="../static/messages.js"></script>
+<link rel="stylesheet" href="../static/style-2.css">
+
+<style>
+  .page-container {
+    height: 800px;
+  }
+
+  .body-container {
+    margin-top: 50px;
+    height: 80%;
+    width: 80%;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+  }
+
+  .menu-info {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 50px;
+  }
+
+  .menu-info a {
+    margin-top: 10px;
+  }
+
+  .messages-container{
+    border: 2px solid #05368B;
+    width: 70%;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    padding: 10px;
+  }
+
+  .messages-container #messages {
+    list-style: none;
+  }
+
+  #send-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #send-form input{
+    width: 400px;
+    height: 50px;
+    margin-bottom: 20px;
+    border: 2px solid #05638B;
+    border-radius: 5px;
+  }
+  #send-form button {
+    width: 50px;
+    background-color: #379683;
+    color: #EDF5E1;
+    border: 1px solid #EDF5E1;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+</style>
+
+{% endblock %}
+
+{% block title %}
+Chat room
+{% endblock %}
+
+{% block header %}
+  {% if channels %}
+  <ul class="list-channels">
+    <li class="dropdown"><span>Channels  ▾</span>
+      <ul class="channels-menu">
+        {% for channel in channels %}
+          <li><a href="{{ url_for('enter_channel', channel_name=channel) }}">{{ channel }}</a></li>
+        {% endfor %}
+      </ul>
+      </li>
+  </ul>
+  {% endif %}
+{% endblock %}
+
+{% block body %}
+<div class="menu-info">
+  <div class="channel-name">
+    You are in {{ channel_name }}
+  </div>
+  <a id="log-out" href="{{url_for('logout')}}">Log out</a>
+  <a id="back-home" href="/home">Back to home</a>
+</div>
+
+
+<div class="messages-container">
+  <ul id="messages">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<form id="send-form">
+  <input type="text" autocomplete="off" placeholder="  Enter your message" name="message">
+  <button id="send-button">Send</button>
+</form>
+
+{% endblock %}

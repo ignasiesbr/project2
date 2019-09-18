@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Channels
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="../static/style-2.css">
+<style>
+.page-container {
+  height: 800px;
+}
+
+.body-container {
+  height: 70%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.body-container .info {
+  margin-top: 100px;
+  color: #05368B;
+  font-size: 24px;
+}
+
+.body-container .channel-creation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  width: 75%;
+  justify-content: center;
+}
+.body-container .channel-creation h4 {
+  margin-bottom: 20px;
+}
+.body-container .channel-creation form{
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  align-items: center;
+}
+.body-container .channel-creation form input{
+  height: 40px;
+  margin-bottom: 20px;
+  border: 2px solid #05386B;
+  border-radius: 6px;
+  width: 70%;
+}
+.body-container .channel-creation form button{
+  background-color: #05386B;
+  color: #EDF5E1;
+  width: 50%;
+  height: 40px;
+  border: 1px solid #EDF5E1;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+</style>
+{% endblock %}
+
+{% block header %}
+  {% if channels %}
+  <ul class="list-channels">
+    <li class="dropdown"><span>Channels  ▾</span>
+      <ul class="channels-menu">
+        {% for channel in channels %}
+          <li><a href="{{ url_for('enter_channel', channel_name=channel) }}">{{ channel }}</a></li>
+        {% endfor %}
+      </ul>
+      </li>
+  </ul>
+  {% endif %}
+{% endblock %}
+
+{% block body %}
+
+<div class="info">
+  <h5>Welcome {{ user }}</h5>
+</div>
+
+<div class="channel-creation">
+  <h4>Create a new channel</h4>
+  <form method="post" action="{{ url_for('createChannel') }}">
+    <input type="text" placeholder="Channel name" placeholder="channel name" name="channel_name"/>
+    <button>Submit</button>
+  </form>
+</div>
+
+<a href="{{url_for('logout')}}">Log out</a>
+
+
+{% endblock %}

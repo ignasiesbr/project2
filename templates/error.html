@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+index
+{% endblock %}
+
+{% block body %}
+
+{{ message }}
+
+<a href="{{url_for('logout')}}">Log out</a>
+
+{% endblock %}
